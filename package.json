@@ -1,0 +1,29 @@
+{
+  "name": "react-chat",
+  "version": "0.0.1",
+  "description": "Simple chat applciation with React, Friebase, ES7 and material-ui",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p-janik/react-chat.git"
+  },
+  "author": "Paweł Janik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/p-janik/react-chat/issues"
+  },
+  "homepage": "https://github.com/p-janik/react-chat#readme",
+  "dependencies": {
+    "babel": "^6.0.15",
+    "babel-core": "^6.1.2",
+    "babel-loader": "^6.0.1",
+    "firebase": "^2.3.1",
+    "react": "^0.14.2",
+    "webpack": "^1.12.3"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^1.12.1"
+  }
+}
