@@ -7,7 +7,7 @@ module.exports = {
     main: [
       'webpack-dev-server/client?http://localhost:8080',
       'webpack/hot/only-dev-server',
-      './src/main.js'
+      './src/app/main.js'
     ]
   },
   output: {
@@ -28,6 +28,9 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      }, {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
       }
     ]
   }
