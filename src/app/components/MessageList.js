@@ -1,4 +1,5 @@
 import React from 'react'
+import {Card} from 'material-ui'
 import Message from './Message'
 
 class MessageList extends React.Component {
@@ -6,10 +7,9 @@ class MessageList extends React.Component {
     super(props)
     this.state = {
       messages: [
-        'message112',
-        'message2sd',
-        'message3123',
-        'asdasd'
+        'message1',
+        'message2',
+        'message3'
       ]
     }
   }
@@ -22,9 +22,9 @@ class MessageList extends React.Component {
     })
 
     return (
-      <div>
+      <Card style={{flexGrow: 2, marginLeft: 30, padding: 30}}>
         {messageNodes}
-      </div>
+      </Card>
     )
   }
 }

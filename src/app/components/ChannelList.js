@@ -1,4 +1,5 @@
 import React from 'react'
+import {Card} from 'material-ui'
 import Channel from './Channel'
 
 class ChannelList extends React.Component {
@@ -6,8 +7,8 @@ class ChannelList extends React.Component {
     super(props)
     this.state = {
       channels: [
-        'channel1123123',
-        'wtf',
+        'channel1',
+        'channel2',
       ]
     }
   }
@@ -20,9 +21,9 @@ class ChannelList extends React.Component {
     })
 
     return (
-      <div>
+      <Card style={{flexGrow: 1, padding: 30}}>
         {channelNodes}
-      </div>
+      </Card>
     )
   }
 }

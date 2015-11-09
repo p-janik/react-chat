@@ -23,11 +23,8 @@ module.exports = {
     loaders: [
       {
         test: /.jsx?$/,
-        loader: 'babel-loader',
+        loaders: ['react-hot', 'babel'],
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react']
-        }
       }, {
         test: /\.scss$/,
         loader: 'style!css!sass'
