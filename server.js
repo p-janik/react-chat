@@ -1,13 +1,14 @@
-import Promise from 'bluebird'
-import webpack from 'webpack'
-import WebpackDevServer from 'webpack-dev-server'
-import config from './webpack.config'
+require("babel-core/register");
+var Promise = require('bluebird')
+var webpack = require('webpack')
+var WebpackDevServer = require('webpack-dev-server')
+var config = require('./webpack.config')
 
 const port = 8080
 
 Promise.promisifyAll([WebpackDevServer])
 
-const server = new WebpackDevServer(webpack(config), {
+var server = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true

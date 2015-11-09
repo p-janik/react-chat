@@ -1,7 +1,7 @@
-import path from 'path'
-import webpack from 'webpack'
+var path = require('path')
+var webpack = require('webpack')
 
-export default {
+module.exports = {
   devtool: 'eval-source-map',
   entry: {
     main: [
@@ -20,10 +20,15 @@ export default {
     new webpack.NoErrorsPlugin()
   ],
   module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      include: `${__dirname}/src`,
-      loaders: ['react-hot', 'babel']
-    }]
+    loaders: [
+      {
+        test: /.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
+    ]
   }
 }
