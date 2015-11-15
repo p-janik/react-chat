@@ -14,7 +14,7 @@ class Message extends React.Component {
     return (
       <ListItem
         leftAvatar={avatar}>
-        {this.props.message}
+        {this.props.message.message}
       </ListItem>
     )
   }
