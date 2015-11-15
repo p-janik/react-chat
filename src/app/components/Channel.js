@@ -1,4 +1,7 @@
 import React from 'react'
+import mui from 'material-ui'
+
+let {ListItem} = mui
 
 class Channel extends React.Component {
   constructor(props) {
@@ -7,9 +10,9 @@ class Channel extends React.Component {
 
   render() {
     return (
-      <div>
+      <ListItem>
         {this.props.channel}
-      </div>
+      </ListItem>
     )
   }
 }
