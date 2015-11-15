@@ -8,23 +8,26 @@ class MessageList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      messages: []
+      messages: {}
     }
 
     this.messagesDbRef = new Firebase('https://vivid-heat-1488.firebaseio.com/messages')
-    this.messagesDbRef.once('value', snap => {
-      let messagesVal = snap.val()
-      let messages = _(messagesVal)
-        .keys()
-        .map(key => messagesVal[key])
-        .value()
+    this.messagesDbRef.on('child_added', snap => {
+      let messageKey = snap.key()
 
+      if (this.state.messages[messageKey])
+        return
+
+      let {messages} = this.state
+      let messageVal = snap.val()
+
+      messages[messageKey] = messageVal
       this.setState({messages})
     })
   }
 
   render() {
-    let messageNodes = this.state.messages.map((message, index) => {
+    let messageNodes = _.values(this.state.messages).map((message, index) => {
       return (
         <Message message={message} key={index}/>
       )
