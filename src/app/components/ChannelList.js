@@ -14,9 +14,9 @@ class ChannelList extends React.Component {
   }
 
   render() {
-    let channelNodes = this.state.channels.map(channel => {
+    let channelNodes = this.state.channels.map((channel, index) => {
       return (
-        <Channel channel={channel}/>
+        <Channel channel={channel} key={index}/>
       )
     })
 
