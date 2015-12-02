@@ -1,24 +1,50 @@
 import React from 'react'
-import {Card} from 'material-ui'
+import mui from 'material-ui'
 import Channel from './Channel'
+import connectToStores from 'alt/utils/connectToStores'
+import ChatStore from '../../stores/ChatStore'
 
+let {Card, List, CircularProgress} = mui
+
+@connectToStores
 class ChannelList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      channels: [
-        'channel1',
-        'channel2',
-      ]
-    }
+    ChatStore.getChannels()
+  }
+
+  static getStores() {
+    return [ChatStore]
+  }
+
+  static getPropsFromStores() {
+    return ChatStore.getState()
   }
 
   render() {
-    let channelNodes = this.state.channels.map((channel, index) => {
+    if (!this.props.channels) {
       return (
-        <Channel channel={channel} key={index}/>
+        <Card style={{flexGrow: 1}}>
+          <CircularProgress
+            mode="indeterminate"
+            style={{
+            paddingTop: 20,
+            paddingBottom: 20,
+            margin: '0 auto',
+            display: 'block',
+            width: '60px'
+          }}/>
+        </Card>
       )
-    })
+    }
+
+    let channelNodes = _(this.props.channels)
+      .keys()
+      .map((k) => {
+        let channel = this.props.channels[k]
+        return (<Channel channel={channel.name} key={k}/>)
+      })
+      .value()
 
     return (
       <Card style={{flexGrow: 1, padding: 30}}>

@@ -1,8 +1,14 @@
 import alt from '../alt'
 import Firebase from 'firebase'
 
-
 class Actions {
+  constructor(){
+    this.generateActions(
+      'channelsReceived',
+      'channelsFailed'
+    )
+  }
+
   login(args) {
     return (dispatch) => {
       let firebaseDbRef = new Firebase('https://vivid-heat-1488.firebaseio.com')
