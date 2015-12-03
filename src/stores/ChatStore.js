@@ -2,13 +2,31 @@ import alt from '../alt'
 import Actions from '../actions'
 import {decorate, bind, datasource} from 'alt/utils/decorators'
 import ChannelSource from '../sources/ChannelSource'
+import MessagesSource from '../sources/MessagesSource'
 import _ from 'lodash'
 
-@datasource(ChannelSource)
+@datasource(ChannelSource, MessagesSource)
 @decorate(alt)
 class ChatStore {
   constructor() {
-    this.state = {user: null}
+    this.state = {
+      user: null,
+      messages: null
+    }
+  }
+
+  @bind(Actions.messagesReceived)
+  receivedMessages(messages) {
+    _(messages)
+      .keys()
+      .each(key => {
+        messages[key].key = key
+      })
+      .value()
+
+    this.setState({
+      messages
+    })
   }
 
   @bind(Actions.channelsReceived)
@@ -30,6 +48,8 @@ class ChatStore {
       channels,
       selectedChannel
     })
+
+    setTimeout(this.getInstance().getMessages, 100)
   }
 
 
