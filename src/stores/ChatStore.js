@@ -11,9 +11,18 @@ class ChatStore {
   constructor() {
     this.state = {
       user: null,
-      messages: null
+      messages: null,
+      messagesLoading: true
     }
   }
+
+  @bind(Actions.messagesLoading)
+  messagesLoading(){
+    this.setState({
+      messagesLoading: true
+    })
+  }
+
 
   @bind(Actions.channelSelected)
   channelSelected(selectedChannel) {
@@ -42,7 +51,8 @@ class ChatStore {
       .value()
 
     this.setState({
-      messages
+      messages,
+      messagesLoading: false
     })
   }
 

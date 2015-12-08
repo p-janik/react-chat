@@ -4,12 +4,13 @@ import Channel from './Channel'
 import connectToStores from 'alt/utils/connectToStores'
 import ChatStore from '../../stores/ChatStore'
 
-let {Card, List, CircularProgress} = mui
+let {Card, CircularProgress} = mui
 
 @connectToStores
 class ChannelList extends React.Component {
   constructor(props) {
     super(props)
+
     ChatStore.getChannels()
   }
 

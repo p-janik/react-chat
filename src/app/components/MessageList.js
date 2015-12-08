@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card} from 'material-ui'
+import {Card, CircularProgress} from 'material-ui'
 import Message from './Message'
 import Firebase from 'firebase'
 import _ from 'lodash'
@@ -10,6 +10,7 @@ import connectToStores from 'alt/utils/connectToStores'
 class MessageList extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
       messages: {}
     }
@@ -26,12 +27,20 @@ class MessageList extends React.Component {
   render() {
     let messageNodes = null
 
-    if (this.props.messages) {
+    if (!this.props.messagesLoading) {
       messageNodes = _.values(this.props.messages).map((message, index) => {
         return (
           <Message message={message} key={index}/>
         )
       })
+    } else {
+      let progressStyle = {
+        padding: '20px 0',
+        margin: '0 auto',
+        display:'block'
+      }
+
+      messageNodes = <CircularProgress mode="indeterminate" style={progressStyle}/>
     }
 
     return (

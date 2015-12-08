@@ -8,7 +8,8 @@ class Actions {
       'channelsFailed',
       'messagesReceived',
       'messagesFailed',
-      'channelSelected'
+      'channelSelected',
+      'messagesLoading'
     )
   }
 
