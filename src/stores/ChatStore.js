@@ -15,6 +15,23 @@ class ChatStore {
     }
   }
 
+  @bind(Actions.channelSelected)
+  channelSelected(selectedChannel) {
+    _(this.state.channels)
+      .values()
+      .each(channel => channel.selected = false)
+      .value()
+
+    selectedChannel.selected = true
+
+    this.setState({
+      channels: this.state.channels,
+      selectedChannel
+    })
+
+    setTimeout(this.getInstance().getMessages, 100)
+  }
+
   @bind(Actions.messagesReceived)
   receivedMessages(messages) {
     _(messages)
