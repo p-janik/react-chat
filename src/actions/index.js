@@ -17,15 +17,17 @@ class Actions {
     )
   }
 
-  login(args) {
+  login(router) {
     return (dispatch) => {
       let firebaseDbRef = new Firebase('https://vivid-heat-1488.firebaseio.com')
 
       firebaseDbRef.authWithOAuthPopup('facebook', (err, user) => {
-        if (err)
+        if (err) {
           return
+        }
 
         dispatch(user)
+        router.transitionTo('/chat')
       })
     }
   }
