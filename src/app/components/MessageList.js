@@ -37,7 +37,8 @@ class MessageList extends React.Component {
       let progressStyle = {
         padding: '20px 0',
         margin: '0 auto',
-        display:'block'
+        display: 'block',
+        width: 60
       }
 
       messageNodes = <CircularProgress mode="indeterminate" style={progressStyle}/>

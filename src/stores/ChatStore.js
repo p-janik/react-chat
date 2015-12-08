@@ -16,13 +16,33 @@ class ChatStore {
     }
   }
 
+  @bind(Actions.messageReceived)
+  messageReceived(message) {
+    let {messages} = this.state
+
+    if (messages[message.key]) {
+      return
+    }
+
+    messages[message.key] = message
+
+    this.setState({
+      messages
+    })
+  }
+
   @bind(Actions.messagesLoading)
-  messagesLoading(){
+  messagesLoading() {
     this.setState({
       messagesLoading: true
     })
   }
 
+  @bind(Actions.sendMessage)
+  sendMessage(message) {
+    this.state.message = message
+    setTimeout(this.getInstance().sendMessage, 10)
+  }
 
   @bind(Actions.channelSelected)
   channelSelected(selectedChannel) {

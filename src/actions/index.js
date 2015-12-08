@@ -2,14 +2,18 @@ import alt from '../alt'
 import Firebase from 'firebase'
 
 class Actions {
-  constructor(){
+  constructor() {
     this.generateActions(
       'channelsReceived',
       'channelsFailed',
       'messagesReceived',
       'messagesFailed',
       'channelSelected',
-      'messagesLoading'
+      'messagesLoading',
+      'sendMessage',
+      'messageSendSuccess',
+      'messageSendError',
+      'messageReceived'
     )
   }
 

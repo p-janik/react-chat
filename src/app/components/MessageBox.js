@@ -1,7 +1,7 @@
 import React from 'react'
 import {Card} from 'material-ui'
 import trim from 'trim'
-import Firebase from 'firebase'
+import Actions from '../../actions'
 
 class MessageBox extends React.Component {
   constructor(props) {
@@ -13,8 +13,6 @@ class MessageBox extends React.Component {
 
     this.onChange = this.onChange.bind(this)
     this.onKeyUp = this.onKeyUp.bind(this)
-
-    this.messagesDbRef = new Firebase('https://vivid-heat-1488.firebaseio.com/messages')
   }
 
   onChange(event) {
@@ -31,7 +29,7 @@ class MessageBox extends React.Component {
         message: ''
       })
 
-      this.messagesDbRef.push({message})
+      Actions.sendMessage(message)
     }
   }
 
