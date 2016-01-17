@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -17,7 +18,8 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextWebpackPlugin('[name].css')
   ],
   module: {
     loaders: [
@@ -27,7 +29,7 @@ module.exports = {
         exclude: /node_modules/,
       }, {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: ExtractTextWebpackPlugin.extract('style-loader', 'css-loader!sass-loader')
       }
     ]
   }
