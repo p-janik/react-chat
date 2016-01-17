@@ -1,21 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-import Router from 'react-router'
+import { render } from 'react-dom'
+import createBrowserHistory from 'history/lib/createBrowserHistory'
 import App from '../components/App'
 import Login from '../components/Login'
 import Chat from '../components/Chat'
 
-let {Route, DefaultRoute, HashLocation} = Router
+import { Router, Route, IndexRoute } from 'react-router'
 
 let routes = (
-  <Route path="/" handler={App}>
-    <DefaultRoute handler={Chat}/>
+  <Router history={createBrowserHistory({  queryKey: false  })}>
+    <Route path="/" component={App}>
+      <IndexRoute component={Login}/>
 
-    <Route path="chat" handler={Chat}/>
-    <Route path="login" handler={Login}/>
-  </Route>
+      <Route path="chat" component={Chat}/>
+      <Route path="login" component={Login}/>
+    </Route>
+  </Router>
 )
 
-Router.run(routes, HashLocation, Root => {
-  ReactDOM.render(<Root/>, document.getElementById('app-container'))
-})
+render(routes, document.getElementById('app-container'))

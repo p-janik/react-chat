@@ -17,7 +17,7 @@ class Actions {
     )
   }
 
-  login(router) {
+  login(history) {
     return (dispatch) => {
       let firebaseDbRef = new Firebase('https://vivid-heat-1488.firebaseio.com')
 
@@ -27,7 +27,7 @@ class Actions {
         }
 
         dispatch(user)
-        router.transitionTo('/chat')
+        history.pushState(null, '/chat')
       })
     }
   }

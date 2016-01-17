@@ -16,12 +16,12 @@ class Login extends React.Component {
   }
 
   onClick() {
-    Actions.login(this.context.router)
+    Actions.login(this.context.history)
   }
 
   static contextTypes = {
-    router: React.PropTypes.func.isRequired
-  }
+    history: React.PropTypes.object.isRequired
+  };
 
   render() {
     return (

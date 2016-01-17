@@ -14,7 +14,7 @@ class App extends React.Component {
 
   static childContextTypes = {
     muiTheme: React.PropTypes.object
-  }
+  };
 
   getChildContext() {
     return {
@@ -26,7 +26,7 @@ class App extends React.Component {
     return (
       <div>
         <AppBar title="React chat"/>
-        <RouteHandler/>
+        {this.props.children}
       </div>
     )
   }

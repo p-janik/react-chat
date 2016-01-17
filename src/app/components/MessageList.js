@@ -4,7 +4,7 @@ import Message from './Message'
 import Firebase from 'firebase'
 import _ from 'lodash'
 import ChatStore from '../../stores/ChatStore'
-import connectToStores from 'alt/utils/connectToStores'
+import connectToStores from 'alt-utils/lib/connectToStores'
 
 @connectToStores
 class MessageList extends React.Component {

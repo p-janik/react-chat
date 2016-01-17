@@ -1,6 +1,6 @@
 import alt from '../alt'
 import Actions from '../actions'
-import {decorate, bind, datasource} from 'alt/utils/decorators'
+import {decorate, bind, datasource} from 'alt-utils/lib/decorators'
 import ChannelSource from '../sources/ChannelSource'
 import MessagesSource from '../sources/MessagesSource'
 import _ from 'lodash'

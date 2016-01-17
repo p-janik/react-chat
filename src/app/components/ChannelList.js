@@ -1,7 +1,7 @@
 import React from 'react'
 import mui from 'material-ui'
 import Channel from './Channel'
-import connectToStores from 'alt/utils/connectToStores'
+import connectToStores from 'alt-utils/lib/connectToStores'
 import ChatStore from '../../stores/ChatStore'
 
 let {Card, CircularProgress} = mui
